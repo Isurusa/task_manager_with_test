@@ -1,0 +1,224 @@
+.info-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001; /* Higher than ConfirmModal */
+  animation: fadeIn 0.2s ease-out;
+  padding: 16px;
+}
+
+.info-box {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.3s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Type-based styling */
+.info-box.success {
+  border-top: 4px solid #10b981;
+}
+
+.info-box.error {
+  border-top: 4px solid #ef4444;
+}
+
+.info-box.warning {
+  border-top: 4px solid #f59e0b;
+}
+
+.info-box.info {
+  border-top: 4px solid #3b82f6;
+}
+
+.info-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.info-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.info-box.success .info-icon {
+  background: #d1fae5;
+  color: #10b981;
+}
+
+.info-box.error .info-icon {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.info-box.warning .info-icon {
+  background: #fef3c7;
+  color: #f59e0b;
+}
+
+.info-box.info .info-icon {
+  background: #dbeafe;
+  color: #3b82f6;
+}
+
+.info-box h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+  font-weight: 600;
+}
+
+.info-message {
+  margin: 0 0 20px 0;
+  color: #555;
+  line-height: 1.5;
+  font-size: 15px;
+}
+
+/* Progress bar for auto-close */
+.progress-container {
+  height: 3px;
+  background: #e5e7eb;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: #6b7280;
+  animation: progress linear forwards;
+  transform-origin: left;
+}
+
+@keyframes progress {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0); }
+}
+
+.info-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-close {
+  padding: 8px 20px;
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 80px;
+}
+
+.btn-close:hover {
+  background: #e5e7eb;
+  border-color: #9ca3af;
+}
+
+.btn-close:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* Closing animation */
+.info-box.closing {
+  animation: slideDown 0.2s ease-out;
+}
+
+/* Toast-like notification (alternative style) */
+.info-box.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  margin: 0;
+  max-width: 350px;
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .info-overlay {
+    padding: 12px;
+    align-items: flex-start;
+    padding-top: 60px;
+  }
+  
+  .info-box {
+    padding: 20px;
+  }
+  
+  .btn-close {
+    width: 100%;
+  }
+}
+
+/* Accessibility: reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .info-overlay,
+  .info-box,
+  .progress-bar {
+    animation: none;
+  }
+}
