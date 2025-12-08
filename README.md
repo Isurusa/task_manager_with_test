@@ -23,12 +23,16 @@ A full-stack Todo application with:
 ```bash
 # 1. Clone and enter
 git clone https://github.com/Isurusa/task_manager_with_test.git
+```
 
+```bash
+# 2. Go to the project source
 cd task_manager_with_test
+```
 
-# 2. Start everything
+```bash
+# 3. Start everything
 docker-compose up --build
-
 ```
 
 That’s it!
@@ -58,8 +62,9 @@ docker-compose logs -f
 1. Backend(Laravel)
 ```bash
     # Run tests + generate beautiful HTML coverage
-    docker-compose exec backend sh -c "XDEBUG_MODE=coverage php artisan test --coverage-html coverage-reports --coverage-clover coverage-reports/coverage.xml --coverage-text"
-
+    docker-compose exec -e INSTALL_DEV_DEPS=true backend sh -c "XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html coverage-reports --coverage-clover coverage-reports/coverage.xml --coverage-text"
+```
+```bash
     # Open coverage report
     http://localhost:8000/coverage-reports/index.html
 ```

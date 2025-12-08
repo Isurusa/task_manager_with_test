@@ -26,7 +26,7 @@ fi
 # Install dependencies
 if [ ! -d "vendor" ]; then
   echo "Installing Composer dependencies..."
-  composer install --no-interaction --optimize-autoloader --no-dev
+  composer install --no-interaction --optimize-autoloader
 fi
 
 # Now handle .env file
