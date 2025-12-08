@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1765141577">
-  <project timestamp="1765141577" name="Clover Coverage">
+<coverage generated="1765159290">
+  <project timestamp="1765159290" name="Clover Coverage">
     <package name="App\Http\Controllers\Api">
       <file name="/var/www/html/app/Http/Controllers/Api/TaskController.php">
         <class name="App\Http\Controllers\Api\TaskController" namespace="App\Http\Controllers\Api">
@@ -48,14 +48,6 @@
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="9" ncloc="8" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
-      </file>
-    </package>
-    <package name="App\Http\Middleware">
-      <file name="/var/www/html/app/Http/Middleware/VerifyCsrfToken.php">
-        <class name="App\Http\Middleware\VerifyCsrfToken" namespace="App\Http\Middleware">
-          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
-        </class>
-        <metrics loc="17" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
     </package>
     <package name="App\Http\Requests">
@@ -118,7 +110,7 @@
     <package name="App\Repositories">
       <file name="/var/www/html/app/Repositories/TaskRepository.php">
         <class name="App\Repositories\TaskRepository" namespace="App\Repositories">
-          <metrics complexity="8" methods="7" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="8" elements="19" coveredelements="13"/>
+          <metrics complexity="7" methods="7" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="8" elements="17" coveredelements="13"/>
         </class>
         <line num="14" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="6"/>
         <line num="16" type="stmt" count="6"/>
@@ -130,16 +122,14 @@
         <line num="31" type="stmt" count="2"/>
         <line num="34" type="method" name="update" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="36" type="stmt" count="1"/>
-        <line num="39" type="method" name="delete" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="39" type="method" name="delete" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="41" type="stmt" count="0"/>
-        <line num="42" type="stmt" count="0"/>
-        <line num="44" type="stmt" count="0"/>
-        <line num="47" type="method" name="getIncompleteTasks" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="44" type="method" name="getIncompleteTasks" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="46" type="stmt" count="1"/>
+        <line num="47" type="stmt" count="1"/>
+        <line num="48" type="stmt" count="1"/>
         <line num="49" type="stmt" count="1"/>
-        <line num="50" type="stmt" count="1"/>
-        <line num="51" type="stmt" count="1"/>
-        <line num="52" type="stmt" count="1"/>
-        <metrics loc="54" ncloc="54" classes="1" methods="7" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="8" elements="19" coveredelements="13"/>
+        <metrics loc="51" ncloc="51" classes="1" methods="7" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="8" elements="17" coveredelements="13"/>
       </file>
     </package>
     <package name="App\Services">
@@ -165,6 +155,6 @@
         <metrics loc="45" ncloc="45" classes="1" methods="5" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="9" elements="15" coveredelements="13"/>
       </file>
     </package>
-    <metrics files="10" loc="333" ncloc="303" classes="6" methods="22" coveredmethods="16" conditionals="0" coveredconditionals="0" statements="69" coveredstatements="48" elements="91" coveredelements="64"/>
+    <metrics files="9" loc="313" ncloc="288" classes="6" methods="22" coveredmethods="16" conditionals="0" coveredconditionals="0" statements="67" coveredstatements="48" elements="89" coveredelements="64"/>
   </project>
 </coverage>

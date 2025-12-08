@@ -38,10 +38,7 @@ class TaskRepository implements TaskRepositoryInterface
 
     public function delete(int $id): bool
     {
-        $task = $this->find($id);
-        if (!$task) return false;
-
-        return $task->delete();
+        return $this->model->destroy($id);
     }
 
     public function getIncompleteTasks(int $limit = 5): Collection

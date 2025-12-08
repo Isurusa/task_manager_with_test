@@ -24,6 +24,11 @@ if [ $RETRY_COUNT -eq $MAX_RETRIES ]; then
 fi
 
 
+if [ -f ".env" ]; then
+    echo "Removing old .env to prevent duplicate APP_KEY..."
+    rm -f .env
+fi
+
 if [ ! -f ".env" ]; then
   echo "Creating .env from .env.example..."
   cp .env.example .env
@@ -38,8 +43,25 @@ fi
 
 
 # Generate application key
-echo "Ensuring valid APP_KEY..."
-php artisan key:generate --force --no-interaction
+echo "Checking APP_KEY..."
+if grep -q "APP_KEY=$" .env || ! grep -q "APP_KEY=base64:" .env; then
+    echo "Generating fresh APP_KEY..."
+    php artisan key:generate --force --no-interaction
+else
+    echo "APP_KEY already exists, keeping it"
+fi
+
+# Verify one APP_KEY
+KEY_COUNT=$(grep -o "base64:" .env | wc -l)
+if [ "$KEY_COUNT" -gt 1 ]; then
+    echo "WARNING: Found $KEY_COUNT APP_KEYs! Fixing..."
+    # Keep only the first one
+    sed -i 's|APP_KEY=.*|APP_KEY=|' .env  # Clear it
+    php artisan key:generate --force --no-interaction  # Generate fresh single key
+fi
+
+echo "APP_KEY configured: $(grep '^APP_KEY=' .env | head -1 | cut -c1-50)..."
+
 
 # Install dependencies if vendor doesn't exist
 if [ ! -d "vendor" ]; then
