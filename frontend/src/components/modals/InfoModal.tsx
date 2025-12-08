@@ -11,10 +11,10 @@ interface InfoModalProps {
   showCloseButton?: boolean;
 }
 
-function InfoModal({ 
-  open, 
-  type = "info", 
-  message, 
+function InfoModal({
+  open,
+  type = "info",
+  message,
   onClose,
   duration = 2500,
   title,
@@ -23,7 +23,6 @@ function InfoModal({
   const timerRef = useRef<number | null>(null);
   const modalRef = useRef<HTMLDivElement>(null);
 
-  // Auto-close timer
   useEffect(() => {
     if (open && duration > 0) {
       timerRef.current = window.setTimeout(() => {
@@ -39,7 +38,6 @@ function InfoModal({
     };
   }, [open, duration, onClose]);
 
-  // Focus trap for accessibility
   useEffect(() => {
     if (open && modalRef.current) {
       const focusableElements = modalRef.current.querySelectorAll(
@@ -51,7 +49,7 @@ function InfoModal({
     }
   }, [open]);
 
-  // Escape key to close
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && open) {
@@ -90,34 +88,33 @@ function InfoModal({
   };
 
   return (
-    <div 
-      className="info-overlay" 
+    <div
+      className="info-overlay"
       onClick={handleOverlayClick}
       role="dialog"
       aria-modal="true"
       aria-labelledby="info-modal-title"
       aria-describedby="info-modal-description"
     >
-      <div 
+      <div
         ref={modalRef}
-        className={`info-box ${type}`} 
+        className={`info-box ${type}`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="info-header">
           <div className="info-icon">{getIcon()}</div>
           {title && <h3 id="info-modal-title">{title}</h3>}
         </div>
-        
+
         <p id="info-modal-description" className="info-message">
           {message}
         </p>
 
-        {/* Progress bar for auto-close */}
         {duration > 0 && (
           <div className="progress-container">
-            <div 
-              className="progress-bar" 
-              style={{ 
+            <div
+              className="progress-bar"
+              style={{
                 animationDuration: `${duration}ms`,
                 animationPlayState: open ? 'running' : 'paused'
               }}
@@ -127,8 +124,8 @@ function InfoModal({
 
         {showCloseButton && (
           <div className="info-actions">
-            <button 
-              className="btn-close" 
+            <button
+              className="btn-close"
               onClick={handleClose}
               autoFocus
             >

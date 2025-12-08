@@ -1,4 +1,3 @@
-/* Container for full width layout */
 .container {
   width: 100%;
   height: 100%;
@@ -8,7 +7,6 @@
   box-sizing: border-box;
 }
 
-/* Main layout: two-column */
 .layout {
   width: 100%;
   max-width: 1200px;
@@ -16,18 +14,16 @@
   display: flex;
   background: white;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   overflow: hidden;
 }
 
-/* Left panel */
 .left-panel {
   width: 50%;
   padding: 24px;
   box-sizing: border-box;
 }
 
-/* Right panel */
 .right-panel {
   width: 50%;
   padding: 24px;
@@ -35,7 +31,6 @@
   overflow-y: auto;
 }
 
-/* Title */
 .left-panel h2,
 .right-panel h2 {
   margin-top: 0;
@@ -44,7 +39,7 @@
 .vertical_line {
   width: 1px;
   background: #d1d5db;
-  height: calc(100% - 60px); 
+  height: calc(100% - 60px);
   margin-top: 30px;
   margin-bottom: 30px;
 }

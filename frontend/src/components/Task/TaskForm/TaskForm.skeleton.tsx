@@ -5,7 +5,9 @@ export function TaskFormSkeleton() {
         <div className="skeleton-form" data-testid="task-form-skeleton">
             <div className="skeleton-input"></div>
             <div className="skeleton-textarea"></div>
-            <div className="skeleton-button"></div>
+            <div className="skeleton-footer">
+                <div className="skeleton-button"></div>
+            </div>
         </div>
     );
 }

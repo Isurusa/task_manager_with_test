@@ -270,10 +270,6 @@ describe('TaskList', () => {
             expect(screen.getByTestId('info-modal')).toBeInTheDocument()
         })
 
-        // Instead of testing auto-close, just test that it has the auto-close behavior
-        // by checking that it will close (we won't wait the full 2.5 seconds)
-        // This is a compromise - we're testing the setup, not the actual timeout
-
         // The modal should have a close button
         expect(screen.getByTestId('info-modal-close')).toBeInTheDocument()
     })
@@ -281,7 +277,7 @@ describe('TaskList', () => {
     it('handles task with null description', () => {
         render(<TaskList />)
 
-        // Second task has null description, should show "No description provided"
+        // Second task has null description
         expect(screen.getByText('No description provided')).toBeInTheDocument()
     })
 })

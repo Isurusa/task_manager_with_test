@@ -4,12 +4,12 @@ import { TaskApiService } from '../api/services/TaskApiService';
 
 const ApiContext = createContext<ITaskApiService | null>(null);
 
-export function ApiProvider({ children, service }: { 
-    children: ReactNode; 
-    service?: ITaskApiService 
+export function ApiProvider({ children, service }: {
+    children: ReactNode;
+    service?: ITaskApiService
 }) {
     const apiService = service || new TaskApiService();
-    
+
     return (
         <ApiContext.Provider value={apiService}>
             {children}

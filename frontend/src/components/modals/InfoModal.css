@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1001; /* Higher than ConfirmModal */
+  z-index: 1001;
   animation: fadeIn 0.2s ease-out;
   padding: 16px;
 }
@@ -25,7 +25,6 @@
   overflow: hidden;
 }
 
-/* Type-based styling */
 .info-box.success {
   border-top: 4px solid #10b981;
 }
@@ -94,7 +93,6 @@
   font-size: 15px;
 }
 
-/* Progress bar for auto-close */
 .progress-container {
   height: 3px;
   background: #e5e7eb;
@@ -111,8 +109,13 @@
 }
 
 @keyframes progress {
-  from { transform: scaleX(1); }
-  to { transform: scaleX(0); }
+  from {
+    transform: scaleX(1);
+  }
+
+  to {
+    transform: scaleX(0);
+  }
 }
 
 .info-actions {
@@ -143,10 +146,14 @@
   outline-offset: 2px;
 }
 
-/* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {
@@ -154,6 +161,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -165,18 +173,17 @@
     opacity: 1;
     transform: translateY(0);
   }
+
   to {
     opacity: 0;
     transform: translateY(20px);
   }
 }
 
-/* Closing animation */
 .info-box.closing {
   animation: slideDown 0.2s ease-out;
 }
 
-/* Toast-like notification (alternative style) */
 .info-box.toast {
   position: fixed;
   top: 20px;
@@ -191,31 +198,31 @@
     opacity: 0;
     transform: translateX(100%);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
-/* Mobile responsiveness */
 @media (max-width: 480px) {
   .info-overlay {
     padding: 12px;
     align-items: flex-start;
     padding-top: 60px;
   }
-  
+
   .info-box {
     padding: 20px;
   }
-  
+
   .btn-close {
     width: 100%;
   }
 }
 
-/* Accessibility: reduced motion */
 @media (prefers-reduced-motion: reduce) {
+
   .info-overlay,
   .info-box,
   .progress-bar {

@@ -40,8 +40,8 @@ function ConfirmModal({
   };
 
   return (
-    <div 
-      className="modal-overlay" 
+    <div
+      className="modal-overlay"
       onClick={handleOverlayClick}
       onKeyDown={handleKeyDown}
       role="dialog"
@@ -54,16 +54,16 @@ function ConfirmModal({
         <p id="confirm-modal-description">{message}</p>
 
         <div className="modal-actions">
-          <button 
-            className="btn-cancel" 
+          <button
+            className="btn-cancel"
             onClick={onCancel}
             disabled={isLoading}
             type="button"
           >
             {cancelText}
           </button>
-          <button 
-            className="btn-confirm" 
+          <button
+            className="btn-confirm"
             onClick={onConfirm}
             disabled={isLoading}
             type="button"

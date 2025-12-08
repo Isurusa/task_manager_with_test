@@ -26,7 +26,6 @@ describe('TaskForm', () => {
             tasks: [],
         })
 
-        // Reset window.alert
         window.alert = vi.fn()
     })
 
@@ -88,7 +87,6 @@ describe('TaskForm', () => {
 
         render(<TaskForm />)
 
-        // Instead of checking for button with spinner, check for TaskFormSkeleton
         // The skeleton component should be rendered
         expect(screen.getByTestId('task-form-skeleton')).toBeInTheDocument()
 

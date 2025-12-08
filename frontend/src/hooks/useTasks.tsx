@@ -33,18 +33,16 @@ export function useTasks() {
     try {
       const newTask = await apiService.createTask(taskData);
 
-      // Option A: Optimistic + refetch (recommended)
       setTasks(prev => [newTask, ...prev]);
-      await loadTasks(); // Ensures sync with server (e.g. g. correct ID, timestamps, etc.)
+      await loadTasks();
 
-      // Trigger event so other components can react (optional but nice)
       window.dispatchEvent(new Event('task:added'));
 
       return newTask;
     } catch (err: any) {
       setError(err.message || 'Failed to create task');
-      // On error: revert optimistic update
-      await loadTasks(); // Refresh to correct state
+
+      await loadTasks();
       throw err;
     } finally {
       setLoading(prev => ({ ...prev, create: false }));
@@ -55,24 +53,21 @@ export function useTasks() {
     setLoading(prev => ({ ...prev, complete: true }));
     setError(null);
 
-    // Optimistically remove
     const previousTasks = tasks;
     setTasks(prev => prev.filter(t => t.id !== id));
 
     try {
       const response = await apiService.completeTask(id);
 
-      // Success → refetch to be 100% sure (or trust optimistic)
       await loadTasks();
 
       window.dispatchEvent(new Event('task:completed'));
 
       return response;
     } catch (err: any) {
-      // Revert on error
       setTasks(previousTasks);
       setError(err.message || 'Failed to complete task');
-      await loadTasks(); // Sync with server anyway
+      await loadTasks();
       throw err;
     } finally {
       setLoading(prev => ({ ...prev, complete: false }));
@@ -81,7 +76,7 @@ export function useTasks() {
 
   return {
     tasks,
-    loading, // Now an object: { tasks, create, complete }
+    loading,
     error,
     loadTasks,
     addTask,

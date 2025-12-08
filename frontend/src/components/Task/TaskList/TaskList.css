@@ -1,9 +1,9 @@
 .task-card {
-    background: #f3f4f6; 
+    background: #f3f4f6;
     border-radius: 8px;
     padding: 18px;
     margin-bottom: 15px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .task-card h3 {
@@ -20,7 +20,7 @@
 }
 
 .task-desc {
-    flex: 1 1 80%; 
+    flex: 1 1 80%;
     margin: 0;
     font-size: 14px;
     color: #555;
@@ -34,7 +34,7 @@
     border-radius: 4px;
     font-size: 14px;
     cursor: pointer;
-    white-space: nowrap; 
+    white-space: nowrap;
 }
 
 .task-actions button:hover:not(:disabled) {
@@ -55,7 +55,7 @@
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 15px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .skeleton-title {
@@ -101,5 +101,43 @@
     background-size: 200% 100%;
     animation: loading 1.5s infinite;
     border-radius: 4px;
-    flex-shrink: 0; /* don't grow */
+    flex-shrink: 0;
+    /* don't grow */
+}
+
+/* Empty State */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.empty-state p {
+    color: #666;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.empty-state-icon {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 1rem;
+    opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    .empty-state-icon {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .empty-state-icon {
+        width: 120px;
+        height: 120px;
+    }
 }

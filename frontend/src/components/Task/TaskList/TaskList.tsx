@@ -3,6 +3,7 @@ import { useTasks } from '../../../hooks/useTasks';
 import { TaskListSkeleton } from './TaskList.skeleton';
 import ConfirmModal from '../../modals/ConfirmModal';
 import InfoModal from '../../modals/InfoModal';
+import NoTasksIcon from '../../../assets/no_tasks.svg';
 import './TaskList.css';
 
 function TaskList() {
@@ -14,7 +15,7 @@ function TaskList() {
     const [infoMessage, setInfoMessage] = useState("");
 
     useEffect(() => {
-        loadTasks(); // Initial load
+        loadTasks();
     }, [loadTasks]);
 
     useEffect(() => {
@@ -60,7 +61,6 @@ function TaskList() {
         setTimeout(() => setInfoOpen(false), 2500);
     };
 
-    // Show skeleton while loading tasks
     if (loading.tasks) {
         return <TaskListSkeleton count={5} />;
     }
@@ -68,6 +68,11 @@ function TaskList() {
     if (tasks.length === 0 && !loading.tasks) {
         return (
             <div className="empty-state">
+                <img
+                    src={NoTasksIcon}
+                    alt="No tasks"
+                    className="empty-state-icon"
+                />
                 <p>No tasks found. Create your first task!</p>
             </div>
         );

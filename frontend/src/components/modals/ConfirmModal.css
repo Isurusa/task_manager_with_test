@@ -88,7 +88,6 @@
   color: transparent;
 }
 
-/* Spinner */
 .spinner {
   display: inline-block;
   width: 16px;
@@ -106,12 +105,19 @@
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {
@@ -119,30 +125,29 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Focus styles for accessibility */
 .btn-cancel:focus,
 .btn-confirm:focus {
   outline: 2px solid #007bff;
   outline-offset: 2px;
 }
 
-/* Mobile responsiveness */
 @media (max-width: 480px) {
   .modal-box {
     margin: 16px;
     padding: 20px;
   }
-  
+
   .modal-actions {
     flex-direction: column;
   }
-  
+
   .btn-cancel,
   .btn-confirm {
     width: 100%;
