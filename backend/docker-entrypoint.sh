@@ -23,7 +23,13 @@ if [ $RETRY_COUNT -eq $MAX_RETRIES ]; then
   echo "Continuing anyway, but database operations may fail..."
 fi
 
+# Install dependencies
+if [ ! -d "vendor" ]; then
+  echo "Installing Composer dependencies..."
+  composer install --no-interaction --optimize-autoloader --no-dev
+fi
 
+# Now handle .env file
 if [ -f ".env" ]; then
     echo "Removing old .env to prevent duplicate APP_KEY..."
     rm -f .env
@@ -55,19 +61,12 @@ fi
 KEY_COUNT=$(grep -o "base64:" .env | wc -l)
 if [ "$KEY_COUNT" -gt 1 ]; then
     echo "WARNING: Found $KEY_COUNT APP_KEYs! Fixing..."
-    # Keep only the first one
-    sed -i 's|APP_KEY=.*|APP_KEY=|' .env  # Clear it
-    php artisan key:generate --force --no-interaction  # Generate fresh single key
+    sed -i 's|APP_KEY=.*|APP_KEY=|' .env
+    php artisan key:generate --force --no-interaction 
 fi
 
 echo "APP_KEY configured: $(grep '^APP_KEY=' .env | head -1 | cut -c1-50)..."
 
-
-# Install dependencies if vendor doesn't exist
-if [ ! -d "vendor" ]; then
-  echo "Installing Composer dependencies..."
-  composer install --no-interaction --optimize-autoloader --no-dev
-fi
 
 # Run migrations
 echo "Running database migrations..."
